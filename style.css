@@ -3,21 +3,68 @@
 }
 body {
   font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
+  margin: 20px 0 0;
   padding: 0;
-  background-color: #f7ae1b;
+  background-color: rgba(45, 45, 186, 0.63);
 }
-.splash-screen {
+.splash-screen,
+.restart-screen {
   position: fixed;
   width: 100%;
   height: 100vh;
-  background-color: rgba(12, 12, 255, 0.692);
+  background-color: rgb(0 0 0 / 70%);
   z-index: 5;
   display: flex;
+  top: 0;
+  left: 0;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
-.splash-screen span {
+.restart-screen {
+  display: none;
+}
+.restart-screen h2 {
+  color: white;
+  font-size: 39px;
+  margin: 0 0 10px;
+}
+.restart-screen h3 {
+  color: white;
+  font-size: 20px;
+  margin: 0 0 10px;
+}
+
+.splash-screen input {
+  width: 25%;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: #ffffffd4;
+  border: none;
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #f75d02;
+}
+.splash-screen input::placeholder {
+  color: #a73d00a9;
+}
+.splash-screen input:focus {
+  outline: none;
+}
+.splash-screen h1 {
+  margin: 0;
+  text-align: center;
+  color: white;
+  margin-bottom: 20px;
+}
+.splash-screen h1 p {
+  background: linear-gradient(to right, #f75d02, #ffffff);
+  background-clip: text;
+  color: transparent;
+  margin: 0;
+}
+.splash-screen span,
+.restart-screen .restart {
   padding: 15px 20px;
   background-color: rgb(255, 56, 21);
   font-size: 19px;
@@ -29,28 +76,59 @@ body {
 .splash-screen span:hover {
   background-color: tomato;
 }
+
 .data-info {
   width: 70%;
-  margin:0 auto;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color:  #a9d9f1;;
+  background: linear-gradient(to right, #f75d02 2%, rgb(216, 216, 216));
   padding: 20px;
   border-radius: 4px;
+}
+.data-info .tries {
+  font-weight: bold;
+}
+.data-info .tries span {
+  color: red;
+  font-weight: bold;
+  font-size: 20px;
+}
+.data-info #countdown {
+  font-weight: bold;
+}
+@media (max-width: 767px) {
+  .data-info #countdown {
+    font-weight: bold;
+    position: fixed;
+    top: 86px;
+    background-color: #ffffff;
+    padding: 7px 5px;
+    z-index: 4;
+    border-bottom-right-radius: 50px;
+    border-top-right-radius: 50px;
+    opacity: 1;
+    left: 0;
+  }
+}
+.data-info #countdown span {
+  color: rgb(5, 195, 5);
+  font-size: 20px;
 }
 .game-blocks {
   height: calc(100vh - 110px);
   width: 70%;
   margin: 20px auto 0;
+  display: grid;
   display: flex;
   flex-wrap: wrap;
-  background-color:#a9d9f1;;
+  background: linear-gradient(to right, #a9d9f1, white);
   padding: 20px;
   gap: 10px;
   border-radius: 4px;
 }
-.game-blocks.no-click{
+.game-blocks.no-click {
   pointer-events: none;
 }
 @media (max-width: 767px) {
@@ -58,7 +136,10 @@ body {
     width: 95%;
   }
   .game-blocks {
-    width: 100%;
+    width: 99%;
+  }
+  .splash-screen input {
+    width: 80%;
   }
 }
 .game-block {
@@ -71,7 +152,7 @@ body {
   border-radius: 4px;
 }
 .game-block.is-flipped,
- .game-block.is-match{
+.game-block.is-match {
   transform: rotateY(180deg);
 }
 .game-block .front {

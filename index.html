@@ -8,11 +8,14 @@
   </head>
   <body>
     <div class="splash-screen">
+      <h1>Welcome to <p>Memory Game</p></h1>
+      <input type="text" placeholder="Your Name" maxlength='10'>
       <span>Start Game</span>
     </div>
     <div class="data-info">
       <div class="name">Name : <span></span></div>
       <div class="tries">Wrong Tries : <span>0</span></div>
+      <div id="countdown">Timer : <span>60</span> s</div>
     </div>
     <div class="game-blocks">
       <div class="game-block" data-pic="strawberry">
@@ -111,6 +114,11 @@
           <img src="Images/img_08.png" alt="image" />
         </div>
       </div>
+    </div>
+    <div class="restart-screen">
+      <h2>You <span></span> !</h2>
+      <h3>your trise is : <span style="color:rgb(255, 251, 0)"></span></h3>
+      <span class="restart">Restart Game</span>
     </div>
     <script src="main.js"></script>
   </body>
